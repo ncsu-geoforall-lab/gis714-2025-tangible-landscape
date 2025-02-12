@@ -2,7 +2,8 @@
   "tasks": [
     {
       "layers": [
-        ["d.rast", "map=slope"]
+        ["d.rast", "map=accum_mfd5K"],
+        ["d.vect", "map=flowlines"]
       ],
       "base": "elev_lid792_1m",
       "scanning_params": {
@@ -11,10 +12,10 @@
         "numscans": 1,
         "interpolate": true
       },
-      "analyses": "simple_example.py",
-      "title": "Slope and Contours",
-      "author": "Example Contributor",
-      "instructions": "Change topography and observe changes in slope and contours."
+      "analyses": "asumi.py",
+      "title": "Watershed and flowline",
+      "author": "asaito333",
+      "instructions": "Run flowrouting"
     }
   ]
 }
