@@ -1,0 +1,20 @@
+{
+  "tasks": [
+    {
+      "layers": [
+        ["d.rast", "map=slope"]
+      ],
+      "base": "elev_lid792_1m",
+      "scanning_params": {
+        "smooth": 10,
+        "zexag": 2,
+        "numscans": 1,
+        "interpolate": true
+      },
+      "analyses": "Deppman.py",
+      "title": "Viewshed Analysis",
+      "author": "Jack Deppman",
+      "instructions": "Display viewshed from coordinates. Will add ability to change input coordinates in future."
+    }
+  ]
+}
