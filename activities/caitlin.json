@@ -1,0 +1,21 @@
+{
+  "tasks": [
+    {
+      "layers": [
+        ["d.rast", "map=elev_lid792_1m"
+        ["d.vect", "map=buffers"]
+      ],
+      "base": "elev_lid792_1m",
+      "scanning_params": {
+        "smooth": 10,
+        "zexag": 2,
+        "numscans": 1,
+        "interpolate": true
+      },
+      "analyses": "caitlin.py",
+      "title": "Buffers around Firestations",
+      "author": "Caitlin",
+      "instructions": "Eventually you will move pins around and it will create a buffer around each pin."
+    }
+  ]
+}
