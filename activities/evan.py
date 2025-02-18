@@ -6,7 +6,7 @@ import grass.script as gs
 
 
 def run_buffer(scanned_elev, env, **kwargs):
-    gs.run_command("r.buffer", input="firestations", output="buffers", type="point", distance=200)
+    gs.run_command("v.buffer", input="firestations", output="buffers", type="point", distance=200)
 
 
 def main():

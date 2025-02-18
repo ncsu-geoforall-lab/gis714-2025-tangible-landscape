@@ -12,9 +12,9 @@
         "numscans": 1,
         "interpolate": true
       },
-      "analyses": "simple_example.py",
+      "analyses": "evan.py",
       "title": "Fire stations and buffers",
-      "author": "Example Contributor",
+      "author": "Evan Dadson",
       "instructions": "Place pins and draw circles around each pin in the landscape."
     }
   ]
