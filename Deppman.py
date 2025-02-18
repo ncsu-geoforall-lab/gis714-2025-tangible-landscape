@@ -5,13 +5,12 @@ import os
 import grass.script as gs
 
 
-def run_viewshed(scanned_elev, env, **kwargs):
+def run_relief(scanned_elev, env, **kwargs):
+    interval = 5
     gs.run_command(
-        "r.viewshed",
+        "r.relief",
         input=scanned_elev,
-        output=viewshed,
-        coordinates=point.coords(598869, 4916642),
-        memory=800,
+        output="elev_relief",
     )
 
 
@@ -23,7 +22,7 @@ def main():
     gs.run_command("g.region", raster=elevation, res=4, flags="a", env=env)
     gs.run_command("r.resamp.stats", input=elevation, output=elev_resampled, env=env)
 
-    run_flow(scanned_elev=elev_resampled, env=env)
+    run_relief(scanned_elev=elev_resampled, env=env)
 
 
 if __name__ == "__main__":
