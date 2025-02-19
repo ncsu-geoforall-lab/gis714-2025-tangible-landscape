@@ -3,7 +3,7 @@
     {
       "layers": [
         ["d.rast", "map=elev_lid792_1m"]
-        ["d.vect", "map=buffers"]
+        ["d.rast", "map=dist_2_roads"]
       ],
       "base": "elev_lid792_1m",
       "scanning_params": {
@@ -13,9 +13,9 @@
         "interpolate": true
       },
       "analyses": "evan.py",
-      "title": "Fire stations and buffers",
+      "title": "Distance to Roads",
       "author": "Evan Dadson",
-      "instructions": "Place pins and draw circles around each pin in the landscape."
+      "instructions": "Vectorize roadsmajor and calculate distance from all cells to roads."
     }
   ]
 }
