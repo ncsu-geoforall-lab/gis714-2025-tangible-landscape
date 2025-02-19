@@ -4,9 +4,9 @@
       "layers": [
         ["d.vect", "map=contour"]
       ],
-      "base": "elev_lid792_1m",
+      "base": "elev_resampled",
       "scanning_params": {
-        "smooth": 10,
+        "smooth": 5,
         "zexag": 2,
         "numscans": 1,
         "interpolate": true
