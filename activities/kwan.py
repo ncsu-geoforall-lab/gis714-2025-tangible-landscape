@@ -3,16 +3,18 @@
 import os
 import grass.script as gs
 
+
 def run_contour(input_elev, env, step=5.0, minlevel=None, maxlevel=None, cut=2):
 
     params = {
         "input": input_elev,
         "output": "contour",
         "step": step,
-        "cut": cut  # Minimum number of points per contour
+        "cut": cut,  # Minimum number of points per contour
     }
 
     gs.run_command("r.contour", env=env, **params)
+
 
 def main():
 
@@ -23,6 +25,7 @@ def main():
     gs.run_command("g.region", raster=input_elev, res=4, flags="a", env=env)
     gs.run_command("r.resamp.stats", input=input_elev, output=elev_resampled, env=env)
     run_contour(input_elev=elev_resampled, env=env, step=2.0, minlevel=0, maxlevel=100)
+
 
 if __name__ == "__main__":
     main()
