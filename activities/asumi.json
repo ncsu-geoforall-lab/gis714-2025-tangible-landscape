@@ -1,21 +1,18 @@
 {
-  "tasks": [
-    {
-      "layers": [
-        ["d.rast", "map=accum_mfd5K"],
-        ["d.vect", "map=flowlines"]
-      ],
-      "base": "elev_lid792_1m",
-      "scanning_params": {
-        "smooth": 10,
-        "zexag": 2,
-        "numscans": 1,
-        "interpolate": true
-      },
-      "analyses": "asumi.py",
-      "title": "Watershed and flowline",
-      "author": "asaito333",
-      "instructions": "Run flowrouting"
-    }
-  ]
+    "tasks": [
+        {
+            "layers": [["d.rast", "map=accum_mfd5K"], ["d.vect", "map=flowlines"]],
+            "base": "elev_lid792_1m",
+            "scanning_params": {
+                "smooth": 10,
+                "zexag": 2,
+                "numscans": 1,
+                "interpolate": true,
+            },
+            "analyses": "asumi.py",
+            "title": "Watershed and flowline",
+            "author": "asaito333",
+            "instructions": "Run flowrouting",
+        }
+    ]
 }
