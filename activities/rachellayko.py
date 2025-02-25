@@ -5,8 +5,8 @@ import os
 import grass.script as gs
 
 
-def run_slope(scanned_elev, env, **kwargs):
-    gs.run_command("r.slope.aspect", elevation=scanned_elev, slope="slope", env=env)
+def run_viewshed(scanned_elev, env, **kwargs):
+    gs.run_command("r.viewshed.cva", input=scanned_elev, vector=points, output = "viewshed", env=env)
 
 
 def main():
@@ -17,7 +17,7 @@ def main():
     gs.run_command("g.region", raster=elevation, res=4, flags="a", env=env)
     gs.run_command("r.resamp.stats", input=elevation, output=elev_resampled, env=env)
 
-    run_slope(scanned_elev=elev_resampled, env=env)
+    run_viewshed(scanned_elev=elev_resampled, env=env)
 
 
 if __name__ == "__main__":
