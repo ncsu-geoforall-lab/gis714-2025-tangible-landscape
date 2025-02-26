@@ -12,6 +12,7 @@ def run_viewshed(scanned_elev, env, **kwargs):
         output="scanned_elev_viewshed",
         coordinates="638728,220609",
         observer_elevation="5.0",
+        overwrite="True",
     )
 
 
