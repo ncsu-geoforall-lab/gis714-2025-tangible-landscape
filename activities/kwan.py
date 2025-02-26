@@ -4,10 +4,10 @@ import os
 import grass.script as gs
 
 
-def run_contour(input_elev, env, step=5.0, minlevel=None, maxlevel=None, cut=2):
+def run_contour(scanned_elev, env, step=5.0, minlevel=None, maxlevel=None, cut=2, **kwargs):
 
     params = {
-        "input": input_elev,
+        "input": scanned_elev,
         "output": "contour",
         "step": step,
         "cut": cut,  # Minimum number of points per contour
