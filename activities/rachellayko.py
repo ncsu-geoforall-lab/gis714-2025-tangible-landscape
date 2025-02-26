@@ -46,21 +46,6 @@ def run_viewshed(scanned_elev, env, points=None, **kwargs):
     for point in data:
         point_list.append([float(p) for p in point.split(",")][:2])
 
-    # Code specific to testing of the analytical function.
-    # Create points which is the additional input needed for the process.
-    points = "points"
-    gs.write_command(
-        "v.in.ascii",
-        flags="t",
-        input="-",
-        output=points,
-        separator="comma",
-        stdin="638432,220382\n638621,220607",
-        env=env,
-    )
-    # Call the analysis.
-    run_viewshed(scanned_elev=elev_resampled, env=env, points=points)
-
 
 def main():
     # No need to edit this block. It should stay the same.
@@ -89,6 +74,9 @@ def main():
     )
     # Call the analysis.
     run_viewshed(scanned_elev=elev_resampled, env=env, points=points)
+    gs.run_command(
+        "r.viewshed.cva", input=scanned_elev, vector=points, output="viewshed", env=env
+    )
 
 
 if __name__ == "__main__":
