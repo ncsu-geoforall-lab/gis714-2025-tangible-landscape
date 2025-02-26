@@ -59,7 +59,7 @@ def run_viewshed(scanned_elev, env, points=None, **kwargs):
         env=env,
     )
     # Call the analysis.
-    run_function_with_points(scanned_elev=elev_resampled, env=env, points=points)
+    run_viewshed(scanned_elev=elev_resampled, env=env, points=points)
 
 
 def main():
