@@ -12,7 +12,7 @@
             "analyses": "Deppman.py",
             "title": "Viewshed Map Creator",
             "author": "Jack Deppman",
-            "instructions": "Create viewshed map from specified point in region. Future expansion will allow for point of viewshed selection by tangible landsacpe user.",
+            "instructions": "Create viewshed map from specified point in region. Future expansion will allow for point of viewshed selection by tangible landsacpe user."
         }
     ]
 }
