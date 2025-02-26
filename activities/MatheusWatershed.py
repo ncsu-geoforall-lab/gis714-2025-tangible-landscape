@@ -6,8 +6,17 @@ import grass.script as gs
 
 
 def run_watershed(scanned_elev, env, **kwargs):
-    
-    gs.run_command("r.watershed", elevation=scanned_elev, threshold=5000, accumulation="accum_sfd5K", drainage="draindir_sfd5K", basin="basin_sfd5K", flags="s", env=env)
+
+    gs.run_command(
+        "r.watershed",
+        elevation=scanned_elev,
+        threshold=5000,
+        accumulation="accum_sfd5K",
+        drainage="draindir_sfd5K",
+        basin="basin_sfd5K",
+        flags="s",
+        env=env,
+    )
 
 
 def main():
