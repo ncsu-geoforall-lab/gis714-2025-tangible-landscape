@@ -1,0 +1,21 @@
+{
+  "tasks": [
+    {
+      "layers": [
+        ["d.rast", "map=elev_lid792_1m"],
+        ["d.rast", "map=dist_2_roads"]
+      ],
+      "base": "elev_lid792_1m",
+      "scanning_params": {
+        "smooth": 10,
+        "zexag": 2,
+        "numscans": 1,
+        "interpolate": true
+      },
+      "analyses": "evan.py",
+      "title": "Distance to Roads",
+      "author": "Evan Dadson",
+      "instructions": "Vectorize roadsmajor and calculate distance from all cells to roads."
+    }
+  ]
+}
