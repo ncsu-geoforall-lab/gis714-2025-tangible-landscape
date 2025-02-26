@@ -61,7 +61,7 @@ jobs:
           ../website/render_activities.py ../activities/config.json ../nc_spm_08_grass7/user1
 
       - name: Archive code coverage results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: activities-as-html
           path: |
