@@ -46,21 +46,49 @@ def run_viewshed(scanned_elev, env, points=None, **kwargs):
     for point in data:
         point_list.append([float(p) for p in point.split(",")][:2])
 
-
-#    gs.run_command(
-#        "r.viewshed.cva", input=scanned_elev, vector=points, # #output="viewshed", env=env
-#    )
+    # Code specific to testing of the analytical function.
+    # Create points which is the additional input needed for the process.
+    points = "points"
+    gs.write_command(
+        "v.in.ascii",
+        flags="t",
+        input="-",
+        output=points,
+        separator="comma",
+        stdin="638432,220382\n638621,220607",
+        env=env,
+    )
+    # Call the analysis.
+    run_function_with_points(scanned_elev=elev_resampled, env=env, points=points)
 
 
 def main():
+    # No need to edit this block. It should stay the same.
+    # Get the current environment variables as a copy.
     env = os.environ.copy()
+    # We want to run this repetitively and replace the old data by the new data.
     env["GRASS_OVERWRITE"] = "1"
     elevation = "elev_lid792_1m"
     elev_resampled = "elev_resampled"
+    # We use resampling to get a similar resolution as with Tangible Landscape.
     gs.run_command("g.region", raster=elevation, res=4, flags="a", env=env)
     gs.run_command("r.resamp.stats", input=elevation, output=elev_resampled, env=env)
+    # The end of the block which needs no editing.
 
-    run_viewshed(scanned_elev=elev_resampled, env=env)
+    # Code specific to testing of the analytical function.
+    # Create points which is the additional input needed for the process.
+    points = "points"
+    gs.write_command(
+        "v.in.ascii",
+        flags="t",
+        input="-",
+        output=points,
+        separator="comma",
+        stdin="638432,220382\n638621,220607",
+        env=env,
+    )
+    # Call the analysis.
+    run_viewshed(scanned_elev=elev_resampled, env=env, points=points)
 
 
 if __name__ == "__main__":
