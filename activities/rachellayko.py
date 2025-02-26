@@ -4,25 +4,52 @@ import os
 
 import grass.script as gs
 
-def create_end_points(env):
-    info = gs.raster_info("scan")
-    y1 = info["south"] + 2 * (info["north"] - info["south"]) / 10.0
-    y2 = info["south"] + 8 * (info["north"] - info["south"]) / 10.0
-    x1 = info["west"] + 2 * (info["east"] - info["west"]) / 10.0
-    x2 = info["west"] + 8 * (info["east"] - info["west"]) / 10.0
-    gs.write_command(
-        "v.in.ascii",
-        input="-",
-        stdin="{x1}|{y1}\n{x2}|{y2}".format(x1=x1, x2=x2, y1=y1, y2=y2),
-        output="points",
-        env=env,
-    )
-    return ((x1, y1), (x2, y2))
 
-def run_viewshed(scanned_elev, env, **kwargs):
-    gs.run_command(
-        "r.viewshed.cva", input=scanned_elev, vector=points, output="viewshed", env=env
+def run_viewshed(scanned_elev, env, points=None, **kwargs):
+    if not points:
+        # If there are no points, ask Tangible Landscape to generate points from
+        # a change in the surface.
+        points = "points"
+        import analyses
+
+        analyses.change_detection(
+            "scan_saved",
+            scanned_elev,
+            points,
+            height_threshold=[10, 100],
+            cells_threshold=[5, 50],
+            add=True,
+            max_detected=5,
+            debug=True,
+            env=env,
+        )
+    # Output point coordinates from GRASS GIS and read coordinates into a Python list.
+    point_list = []
+    data = (
+        gs.read_command(
+            "v.out.ascii",
+            input=points,
+            type="point",
+            format="point",
+            separator="comma",
+            env=env,
+        )
+        .strip()
+        .splitlines()
     )
+    if len(data) < 2:
+        # For the cases when the analysis expects at least 2 points, we check the
+        # number of points and return from the function if there is less than 2
+        # points. (No points is a perfectly valid state in Tangible Landscape,
+        # so we need to deal with it here.)
+        return
+    for point in data:
+        point_list.append([float(p) for p in point.split(",")][:2])
+
+
+#    gs.run_command(
+#        "r.viewshed.cva", input=scanned_elev, vector=points, # #output="viewshed", env=env
+#    )
 
 
 def main():
