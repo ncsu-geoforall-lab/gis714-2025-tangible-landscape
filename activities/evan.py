@@ -6,8 +6,8 @@ import grass.script as gs
 
 
 def run_distance(scanned_elev, env, **kwargs):
-    gs.run_command("v.to.rast", input="roadsmajor", output="roadsmajor_rast", use="dir")
-    gs.run_command("r.grow.distance", input="roadsmajor_rast", distance="dist_2_roads")
+    gs.run_command("v.to.rast", input="roadsmajor", output="roadsmajor_rast", use="dir", overwrite=True)
+    gs.run_command("r.grow.distance", input="roadsmajor_rast", distance="dist_2_roads", overwrite=True)
 
 
 def main():
