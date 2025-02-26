@@ -6,7 +6,9 @@ import grass.script as gs
 
 
 def run_viewshed(scanned_elev, env, **kwargs):
-    gs.run_command("r.viewshed.cva", input=scanned_elev, vector=points, output = "viewshed", env=env)
+    gs.run_command(
+        "r.viewshed.cva", input=scanned_elev, vector=points, output="viewshed", env=env
+    )
 
 
 def main():
