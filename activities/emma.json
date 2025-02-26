@@ -12,7 +12,7 @@
         "numscans": 1,
         "interpolate": true
       },
-      "analyses": "simple_example.py",
+      "analyses": "emma.py",
       "title": "Buffers and Firestations",
       "author": "Emma",
       "instructions": "Will create a buffer around each pin."
