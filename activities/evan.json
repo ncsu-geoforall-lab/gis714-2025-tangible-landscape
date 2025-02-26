@@ -2,7 +2,7 @@
   "tasks": [
     {
       "layers": [
-        ["d.rast", "map=elev_lid792_1m"]
+        ["d.rast", "map=elev_lid792_1m"],
         ["d.rast", "map=dist_2_roads"]
       ],
       "base": "elev_lid792_1m",
