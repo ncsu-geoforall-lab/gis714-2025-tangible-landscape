@@ -87,14 +87,14 @@ def main():
     env = os.environ.copy()
     env["GRASS_OVERWRITE"] = "1"
 
-    # Run processes in order
+    
     set_region(env)
     interpolate_elevation(env)
     convert_streams_to_raster(env)
     compute_stream_gradients(env)
     merge_gradients(env)
     run_overland_flow(env)
-    display_results(env)  # ✅ Calls the function safely
+    display_results(env)  
 
 
 if __name__ == "__main__":
