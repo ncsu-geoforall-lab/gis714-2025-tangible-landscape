@@ -3,7 +3,8 @@
     {
       "layers": [
         ["d.rast", "map=elev_lid792_1m"],
-        ["d.vect", "map=buffers"]
+        ["d.rast", "map=HAND"],
+        ["d.rast", "map=water_flow"]
       ],
       "base": "elev_lid792_1m",
       "scanning_params": {
@@ -13,9 +14,9 @@
         "interpolate": true
       },
       "analyses": "emma.py",
-      "title": "Buffers and Firestations",
+      "title": "Flood Simulation with Tangible Landscape",
       "author": "Emma",
-      "instructions": "Will create a buffer around each pin."
+      "instructions": "Modify elevation and re-run simulations to see flood behavior."
     }
   ]
 }
