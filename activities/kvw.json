@@ -1,0 +1,21 @@
+{
+  "tasks": [
+    {
+      "layers": [
+        ["d.rast", "map=elev_lid792_1m"],
+        ["d.rast", "map=output_lake"]
+      ],
+      "base": "elev_lid792_1m",
+      "scanning_params": {
+        "smooth": 10,
+        "zexag": 2,
+        "numscans": 1,
+        "interpolate": true
+      },
+      "analyses": "kvw.py",
+      "title": "Lake Flooding 3 m Higher",
+      "author": "Kelly van Woesik",
+      "instructions": "Move the pins around and a flood will be created 3 m higher."
+    }
+  ]
+}
