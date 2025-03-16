@@ -6,7 +6,7 @@ import grass.script as gs
 
 
 def run_viewshed(scanned_elev, env, points=None, **kwargs):
-    
+
     if not points:
         # If there are no points, ask Tangible Landscape to generate points from
         # a change in the surface.
@@ -46,11 +46,15 @@ def run_viewshed(scanned_elev, env, points=None, **kwargs):
         return
     for point in data:
         point_list.append([float(p) for p in point.split(",")][:2])
-    
-    gs.run_command(
-        "r.viewshed", input=scanned_elev, coordinates=point_list[0], output="viewshed", env=env)
 
-        
+    gs.run_command(
+        "r.viewshed",
+        input=scanned_elev,
+        coordinates=point_list[0],
+        output="viewshed",
+        env=env,
+    )
+
 
 def main():
     # No need to edit this block. It should stay the same.
@@ -78,9 +82,10 @@ def main():
         env=env,
     )
     # Call the analysis.
-    #run_viewshed(scanned_elev=elev_resampled, env=env, points=points)
+    # run_viewshed(scanned_elev=elev_resampled, env=env, points=points)
     gs.run_command(
-        "r.viewshed", input=elev_resampled, vector=points, output="viewshed", env=env)
+        "r.viewshed", input=elev_resampled, vector=points, output="viewshed", env=env
+    )
 
 
 if __name__ == "__main__":
