@@ -1,0 +1,20 @@
+{
+  "tasks": [
+    {
+      "layers": [
+        ["d.rast", "map=scanned_elev_viewshed"]
+      ],
+      "base": "elev_lid792_1m",
+      "scanning_params": {
+        "smooth": 10,
+        "zexag": 2,
+        "numscans": 1,
+        "interpolate": true
+      },
+      "analyses": "Deppman.py",
+      "title": "Viewshed Map Creator",
+      "author": "Jack Deppman",
+      "instructions": "Create viewshed map from input elevation raster, Future expansion will allow for point of viewshed selection by tangible landsacpe user."
+    }
+  ]
+}
