@@ -18,12 +18,6 @@ def run_flood_simulation(scanned_elev, env, **kwargs):
     print("Lake flooding simulation completed!")
 
 
-def display_flood_result():
-    img = gj.Map(use_region=True)
-    img.d_rast(map="elev_lid792_1m")
-    img.d_rast(map="flood1")
-    img.show()
-
 
 def main():
     env = os.environ.copy()
