@@ -57,7 +57,6 @@ def run_viewshed(scanned_elev, env, points=None, **kwargs):
 
 
 def main():
-    """Main function which runs when testing without Tangible Landscape"""
 
     # Get the current environment variables as a copy.
     env = os.environ.copy()
