@@ -4,7 +4,7 @@ import os
 import grass.script as gs
 
 
-def run_flood_simulation(env):
+def run_flood_simulation(scanned_elev, env, **kwargs):
 
     # Simulate lake flooding from given coordinates
     gs.run_command(
