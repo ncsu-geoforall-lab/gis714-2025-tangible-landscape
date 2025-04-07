@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import os
-
 import grass.script as gs
 
 
@@ -47,9 +46,19 @@ def run_viewshed(scanned_elev, env, points=None, **kwargs):
     for point in data:
         point_list.append([float(p) for p in point.split(",")][:2])
 
+    # run the viewshed analysis using r.viewshed
+    gs.run_command(
+        "r.viewshed",
+        input=scanned_elev,
+        coordinates=point_list[0],
+        output="viewshed",
+        env=env,
+    )
+
 
 def main():
-    # No need to edit this block. It should stay the same.
+    """Main function which runs when testing without Tangible Landscape"""
+
     # Get the current environment variables as a copy.
     env = os.environ.copy()
     # We want to run this repetitively and replace the old data by the new data.
