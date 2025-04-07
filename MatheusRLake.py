@@ -9,7 +9,7 @@ def run_flood_simulation(scanned_elev, env, **kwargs):
     # Simulate lake flooding from given coordinates
     gs.run_command(
         "r.lake",
-        elevation="elev_lid792_1m",
+        elevation=scanned_elev,
         water_level=120.5,
         lake="flood1",
         coordinates=(638728, 220278),
