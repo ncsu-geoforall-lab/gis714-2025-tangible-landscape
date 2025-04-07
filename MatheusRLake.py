@@ -2,7 +2,6 @@
 
 import os
 import grass.script as gs
-import grass.jupyter as gj
 
 
 def run_flood_simulation(env):
