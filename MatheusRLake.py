@@ -5,8 +5,6 @@ import grass.script as gs
 
 
 def run_flood_simulation(env):
-    # Set computational region based on the elevation raster
-    gs.run_command("g.region", raster="elev_lid792_1m", flags="p", env=env)
 
     # Simulate lake flooding from given coordinates
     gs.run_command(
