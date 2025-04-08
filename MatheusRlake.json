@@ -2,9 +2,12 @@
   "tasks": [
     {
       "layers": [
-        ["d.rast", "map=flood1"]
+        ["g.region", "raster=elev_lid792_1m", "flags=p"],
+        ["r.lake", "elevation=elev_lid792_1m", "water_level=113.5", "lake=flood1", "coordinates=638728,220278"],
+        ["d.rast", "map=elev_lid792_1m"],
+        ["d.rast", "map=flood1"],
+        ["d.out.file", "output=floodedarea"]
       ],
-
       "base": "elev_lid792_1m",
       "scanning_params": {
         "smooth": 1.0,
