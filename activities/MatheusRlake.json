@@ -12,7 +12,7 @@
             "analyses": "MatheusRlake.py",
             "title": "Lake Flood Simulation",
             "author": "Matheus",
-            "instructions": "This task simulates flooding from a lake overtopping using the r.lake module and displays the flooded areas.",
+            "instructions": "This task simulates flooding from a lake overtopping using the r.lake module and displays the flooded areas."
         }
     ]
 }
