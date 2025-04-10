@@ -1,13 +1,13 @@
 {
     "tasks": [
         {
-            "layers": [["d.rast", "map=elev_lid792_1m"], ["d.rast", "map=flood1"]]
+            "layers": [["d.rast", "map=elev_lid792_1m"], ["d.rast", "map=flood1"]],
             "base": "elev_lid792_1m",
             "scanning_params": {
                 "smooth": 10,
                 "zexag": 2,
                 "numscans": 1,
-                "interpolate": true,
+                "interpolate": true
             },
             "analyses": "MatheusRlake.py",
             "title": "Lake Flood Simulation",
