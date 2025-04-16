@@ -17,13 +17,15 @@ def run_dist_from_water(scanned_elev, env, **kwargs):
         drainage='drainage',
         stream='streams',
         threshold=100,
-        overwrite=True
+        overwrite=True,
+        env=env
     )
     gs.run_command(
         'r.to.vect',
         input='streams',
         output='streams',
-        type='line'
+        type='line',
+        env=env
     )
     gs.run_command(
         'r.stream.distance',
@@ -31,14 +33,16 @@ def run_dist_from_water(scanned_elev, env, **kwargs):
         direction='drainage',
         elevation=scanned_elev,
         method='downstream',
-        difference='above_stream'
+        difference='above_stream',
+        env=env
     )
     gs.run_command(
         'r.lake',
         elevation='above_stream',
         water_level=5,
         lake='flood',
-        seed='streams'
+        seed='streams',
+        env=env
     )
     gs.run_command(
         "r.grow.distance",
