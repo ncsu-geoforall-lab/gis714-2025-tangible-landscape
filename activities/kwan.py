@@ -24,7 +24,7 @@ def main():
     elev_resampled = "elev_resampled"
     gs.run_command("g.region", raster=input_elev, res=4, flags="a", env=env)
     gs.run_command("r.resamp.stats", input=input_elev, output=elev_resampled, env=env)
-    run_contour(input_elev=elev_resampled, env=env, step=2.0, minlevel=0, maxlevel=100)
+    run_contour(elev_resampled, env=env, step=2.0, minlevel=0, maxlevel=100)
 
 
 if __name__ == "__main__":
