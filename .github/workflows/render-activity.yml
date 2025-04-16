@@ -53,6 +53,7 @@ jobs:
         run: |
           grass --tmp-location XY --exec g.extension r.accumulate
           grass --tmp-location XY --exec g.extension r.lake.series
+          grass --tmp-location XY --exec g.extension r.stream.distance
 
       - name: Run
         run: |
