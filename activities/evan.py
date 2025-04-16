@@ -6,51 +6,46 @@ import grass.script as gs
 
 
 def run_dist_from_water(scanned_elev, env, **kwargs):
-    """Distance to lakes is a proxy for distance to riparian areas. 
+    """Distance to lakes is a proxy for distance to riparian areas.
     This is important for understand impacts to insect growth, development, and establishment in the landscape.
     Using the HAND method, this function creates an innundation map and projects distance to flooding.
     """
     gs.run_command(
-        'r.watershed',
+        "r.watershed",
         elevation=scanned_elev,
-        accumulation='flowacc',
-        drainage='drainage',
-        stream='streams',
+        accumulation="flowacc",
+        drainage="drainage",
+        stream="streams",
         threshold=100,
         overwrite=True,
-        env=env
+        env=env,
     )
+    gs.run_command("r.to.vect", input="streams", output="streams", type="line", env=env)
     gs.run_command(
-        'r.to.vect',
-        input='streams',
-        output='streams',
-        type='line',
-        env=env
-    )
-    gs.run_command(
-        'r.stream.distance',
-        stream_rast='streams',
-        direction='drainage',
+        "r.stream.distance",
+        stream_rast="streams",
+        direction="drainage",
         elevation=scanned_elev,
-        method='downstream',
-        difference='above_stream',
-        env=env
+        method="downstream",
+        difference="above_stream",
+        env=env,
     )
     gs.run_command(
-        'r.lake',
-        elevation='above_stream',
+        "r.lake",
+        elevation="above_stream",
         water_level=5,
-        lake='flood',
-        seed='streams',
-        env=env
+        lake="flood",
+        seed="streams",
+        env=env,
     )
     gs.run_command(
         "r.grow.distance",
         input="flood",
         distance="dist_to_lake",
         overwrite=True,
-        env=env
+        env=env,
     )
+
 
 def main():
     env = os.environ.copy()
