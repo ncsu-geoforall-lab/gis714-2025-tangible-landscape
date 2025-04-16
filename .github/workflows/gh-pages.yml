@@ -38,7 +38,7 @@ jobs:
           grass --tmp-location XY --exec g.version -e
 
       - name: Cache sample data
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         id: cache
         with:
           path: ./nc_spm_08_grass7
@@ -53,6 +53,7 @@ jobs:
         run: |
           grass --tmp-location XY --exec g.extension r.accumulate
           grass --tmp-location XY --exec g.extension r.lake.series
+          grass --tmp-location XY --exec g.extension r.stream.distance
 
       - name: Run
         run: |
