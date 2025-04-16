@@ -1,0 +1,28 @@
+{
+  "tasks": [
+    {
+      "layers": [
+        [
+            "d.rast", 
+            "map=elev_lid792_1m"
+        ],
+        [
+            "d.rast", 
+            "map=dist_to_lake"
+        ]
+      ],
+      "base": "elev_lid792_1m",
+      "scanning_params": {
+        "smooth": 10,
+        "zexag": 2,
+        "numscans": 1,
+        "interpolate": true
+      },
+        "calibrate": true,
+        "analyses": "evan.py",
+        "title": "Distance from Water",
+        "author": "Evan Dadson",
+        "instructions": "Allow users to customize topography and compute distance to innundation."
+    }
+  ]
+}
