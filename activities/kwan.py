@@ -4,7 +4,9 @@ import os
 import grass.script as gs
 
 
-def run_contour(scanned_elev, env, step=5.0, minlevel=None, maxlevel=None, cut=2, **kwargs):
+def run_contour(
+    scanned_elev, env, step=5.0, minlevel=None, maxlevel=None, cut=2, **kwargs
+):
 
     params = {
         "input": scanned_elev,
