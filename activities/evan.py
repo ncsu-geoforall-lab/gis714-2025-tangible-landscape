@@ -48,7 +48,8 @@ def run_dist_from_water(scanned_elev, env, **kwargs):
         "r.grow.distance",
         input="flood",
         distance="dist_to_lake",
-        overwrite=True
+        overwrite=True,
+        env=env
     )
 
 def main():
