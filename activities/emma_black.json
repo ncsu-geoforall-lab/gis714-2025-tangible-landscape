@@ -1,0 +1,23 @@
+{
+  "tasks": [
+    {
+      "layers": [
+        [
+          "d.rast",
+          "map=flood_depth"
+        ]
+      ],
+      "base": "elev_lid792_1m",
+      "scanning_params": {
+        "smooth": 10,
+        "zexag": 2,
+        "numscans": 1,
+        "interpolate": true
+      },
+      "analyses": "tangible_flood_sim.py",
+      "title": "Flood Simulation with r.sim.water",
+      "author": "Emma V.",
+      "instructions": "Change the sand topography to observe how simulated flooding (via r.sim.water) changes based on terrain."
+    }
+  ]
+}
