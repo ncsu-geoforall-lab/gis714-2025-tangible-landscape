@@ -3,22 +3,24 @@
 import os
 import grass.script as gs
 
-def run_flood_sim(scanned_elev, env, **kwargs):
-    env["GRASS_OVERWRITE"] = "1"
 
+def run_flood_sim(scanned_elev, env, **kwargs):
+    print("I'm running emma_black.py!!")
     # clean DEM (fill nulls)
-    gs.mapcalc("elev_clean = if(isnull({0}), 0, {0})".format(scanned_elev), env=env, overwrite=True)
+    gs.mapcalc("elev_clean = if(isnull({0}), 0, {0})".format(scanned_elev), env=env)
 
     # generate dx/dy slope components
     gs.run_command("r.slope.aspect", elevation="elev_clean", dx="dx", dy="dy", env=env)
 
     # run r.sim.water
     gs.run_command("r.sim.water", elevation="elev_clean", dx="dx", dy="dy",
-                   rain_value=50, depth="flood_depth", niterations=100, nwalkers=1000,
+                   rain_value=50, depth="flood_depth", niterations=30, nwalkers=1000,
                    env=env)
 
     # create binary flood mask
-    gs.mapcalc("flood_mask = if(flood_depth > 0.01, 1, null())", env=env, overwrite=True)
+    gs.mapcalc("flood_mask = if(flood_depth > 0.005, flood_depth, null())", env=env, overwrite=True)
+
+    gs.run_command("r.colors", map="flood_mask", color="water", env=env)
 
 def main():
     env = os.environ.copy()
