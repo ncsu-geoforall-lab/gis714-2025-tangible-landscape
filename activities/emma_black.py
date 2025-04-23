@@ -18,9 +18,10 @@ def run_flood_sim(scanned_elev, env, **kwargs):
                    env=env)
 
     # create binary flood mask
-    gs.mapcalc("flood_mask = if(flood_depth > 0.005, flood_depth, null())", env=env, overwrite=True)
+    gs.mapcalc("flood_mask = if(flood_depth > .01, flood_depth, null())", env=env, overwrite=True)
 
     gs.run_command("r.colors", map="flood_mask", color="water", env=env)
+
 
 def main():
     env = os.environ.copy()
@@ -32,6 +33,7 @@ def main():
     gs.run_command("r.resamp.stats", input=elevation, output=elev_resampled, env=env)
 
     run_flood_sim(scanned_elev=elev_resampled, env=env)
+
 
 if __name__ == "__main__":
     main()
